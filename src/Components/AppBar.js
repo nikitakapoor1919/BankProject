@@ -12,7 +12,7 @@ class MyAppBar extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <AppBar className={classes.appBar}>
+                <AppBar style={{background:"rgb(67, 63, 63)"}}>
                     <Toolbar>
                         <a href='/' className={classes.back}>
                         <IconButton edge="start" style={{color:"white"}} onClick={this.back} aria-label="close">

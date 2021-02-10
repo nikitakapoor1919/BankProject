@@ -58,7 +58,7 @@ class History extends Component {
           <TableRow >
             <TableCell className={classes.showHeader} >SENDER</TableCell>
             <TableCell className={classes.hideHeader} >RECIEVER</TableCell>
-            <TableCell className={classes.showHeader} >BALANCE</TableCell>
+            <TableCell className={classes.showHeader} >AMOUNT(₹)</TableCell>
             <TableCell className={classes.showHeader} >TIME</TableCell>
           </TableRow>
         </TableHead>
@@ -67,7 +67,7 @@ class History extends Component {
             <TableRow key={id}>
               <TableCell >{board.Sender}</TableCell>
               <TableCell >{board.Reciever}</TableCell>
-              <TableCell >{board.Amount}</TableCell>
+              <TableCell >{board.Amount}₹</TableCell>
               <TableCell>{moment(Number(board.timestamp)).format('h:mm A ll')} </TableCell>
             </TableRow>
           ))}

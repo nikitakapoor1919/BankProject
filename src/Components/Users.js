@@ -61,7 +61,7 @@ class Users extends Component {
             <TableCell className={classes.showHeader} >FIRST NAME</TableCell>
             <TableCell className={classes.hideHeader} >LAST NAME</TableCell>
             <TableCell className={classes.hideHeader} >EMAIL</TableCell>
-            <TableCell className={classes.showHeader} >BALANCE</TableCell>
+            <TableCell className={classes.showHeader} >BALANCE(₹)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -70,7 +70,7 @@ class Users extends Component {
               <TableCell >{board.FirstName}</TableCell>
               <TableCell className={classes.hide}>{board.LastName}</TableCell>
               <TableCell className={classes.hide}>{board.Email}</TableCell>
-              <TableCell >{board.Balance}</TableCell>
+              <TableCell >{board.Balance}₹</TableCell>
             </TableRow>
           ))}
         </TableBody>

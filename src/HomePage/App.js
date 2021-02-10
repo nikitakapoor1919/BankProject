@@ -7,6 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Footer from '../Components/Footer'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import Button from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +53,7 @@ export default function SignInSide() {
         <Grid container component="main" className={classes.root}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square style={{backgroundImage: 'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/bg3.jpg)'}}>
             <div className={classes.paper}>
             <Typography variant="h4" component="h2" className={classes.heading}>
             Ready To Transfer Money
@@ -67,13 +71,26 @@ export default function SignInSide() {
             <Link color="inherit" href="/transfer" >
                Transfer
             </Link>
-            <Link color="inherit" href="/contact" >
+            {/* <Link color="inherit" href="/contact" >
             Contact Us
-            </Link>
+            </Link> */}
             <Link color="inherit" href="/history" >
             Transaction History
             </Link>
             </Breadcrumbs>
+            <div style={{display:"flex"}}>
+            <Link to="/hj">
+            <Button style={{color:"black"}}onClick={()=>window.open("https://github.com/nikitakapoor1919", '_blank')}>
+              <GitHubIcon />
+            </Button>
+            </Link>
+            <Button style={{color:"black"}} onClick={()=>window.open("https://twitter.com/nikitakapoor_19", '_blank')}>
+            <TwitterIcon/>
+            </Button>
+            <Button style={{color:"black"}} onClick={()=>window.open("https://www.linkedin.com/in/nikita-kapoor-609813190/", '_blank')}>
+              <LinkedInIcon/>
+            </Button>
+            </div>
             </div>
         </Grid>
         </Grid>

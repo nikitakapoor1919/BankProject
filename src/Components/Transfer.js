@@ -25,10 +25,11 @@ export default class Transfer extends Component {
       open:false,
       status:false,
       users:[],
-      warning:false,
+      warning1:false,
+      warning2:false,
       error:false,
       success:false,
-      Amt:100,
+      Amt:0,
       FriendAcc:"",
       Pin:"",
       MyAcc:"",
@@ -68,15 +69,67 @@ export default class Transfer extends Component {
     const { onClose, selectedValue, open } = this.props;
     return (
       <div style={{background:'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/background.jpg)',height:'100vh',}}>
+      <div style={{position:"relative",top:75}}>
       {
-        this.state.success? <Alert onClose={() => {this.setState({success:false})}}
+        this.state.success? <Alert action={<IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => this.setState({success:false})}
+          style={{width:'25%',marginTop:'-20px'}}
+          >
+          <CloseIcon fontSize="inherit" />
+          </IconButton>} severity="success" 
         >
         Money Transferred Successfully !!
         </Alert>:""
       }
+      {
+        this.state.warning1? <Alert  action={<IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => this.setState({warning1:false})}
+          style={{width:'25%',marginTop:'-20px'}}
+          >
+          <CloseIcon fontSize="inherit" />
+          </IconButton>} severity="warning" 
+        >
+        Invaling Amount
+        </Alert>:""
+      }
+      {
+        this.state.warning2? <Alert  action={<IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => this.setState({warning2:false})}
+          style={{width:'25%',marginTop:'-20px'}}
+          >
+          <CloseIcon fontSize="inherit" />
+          </IconButton>} severity="warning" 
+        >
+         Account Not exist
+        </Alert>:""
+      }
+      {
+        this.state.error? <Alert  severity="error" action={<IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => this.setState({error:false})}
+          style={{width:'25%',marginTop:'-20px'}}
+          >
+          <CloseIcon fontSize="inherit" />
+          </IconButton>}
+        >
+        Your balance is unsufficient !!
+        </Alert>:""
+      }
+      </div>
           {/* <Alert severity="error">Account Number Not Exist !!</Alert>
           <Alert severity="warning">Your balance is unsufficient !!</Alert> */}
-      <div style={{margin:"0 auto",position:"relative",top:70,display: "flex",justifyContent: "center",alignItems: "center"}}>
+      <div style={{margin:"0 auto",position:"relative",top:40,display: "flex",justifyContent: "center",alignItems: "center"}}>
         <Button
             color="secondary"
             style={{width:250,margin:50}}
@@ -173,81 +226,88 @@ export default class Transfer extends Component {
     }
 }
   transferMoney=async ()=>{
-    var docRef = firebase.firestore().collection("users").doc(this.state.MyAcc);
-    await docRef.get().then((doc) => {
-        if (doc.exists) {
-            console.log("Document data:", doc.data().Balance);
-            const bal=doc.data().Balance
-            this.setState({MyBal:bal})
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch((error) => {
-        console.log("Error getting document:", error);
-    });
-
-    await firebase.firestore().collection("users").doc(this.state.MyAcc).update({
-        Balance:+this.state.MyBal- +this.state.Amt
-    })
-    .then(() => {
-        console.log("Document successfully written!");
-    })
-    .catch((error) => {
-        console.error("Error writing document: ", error);
-    });
-
-    var docRef = firebase.firestore().collection("users").doc(this.state.FriendAcc);
-    await docRef.get().then((doc) => {
-        if (doc.exists) {
-            console.log("Document data:", doc.data().Balance);
-            const bal=doc.data().Balance
-            this.setState({FriendBal:bal})
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch((error) => {
-        console.log("Error getting document:", error);
-    });
-
-    await firebase.firestore().collection("users").doc(this.state.FriendAcc).update({
-        Balance:+this.state.FriendBal+ +this.state.Amt
-    })
-    .then(() => {
-        console.log("Document successfully written!");
-    })
-    .catch((error) => {
-        console.error("Error writing document: ", error);
-    });
-
-    await firebase.firestore().collection("history").add({
-      Sender:this.state.MyAcc,
-      Reciever:this.state.FriendAcc,
-      Amount:this.state.Amt,
-      timestamp:  moment().valueOf().toString()
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
+    if(this.state.Amt==0||this.state.Amt<0)
+    {
+      this.setState({warning1:true})
+      return
+    }
+    var doc = firebase.firestore().collection('users').doc(this.state.FriendAcc);
+    doc.get().then(async (docData) => {
+     if (docData.exists) {
+      var docRef = firebase.firestore().collection("users").doc(this.state.MyAcc);
+      await docRef.get().then((doc) => {
+          if (doc.exists) {
+              console.log("Document data:", doc.data().Balance);
+              const bal=doc.data().Balance
+              this.setState({MyBal:bal})
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      }).catch((error) => {
+          console.log("Error getting document:", error);
+      });
+      if(this.state.Amt > this.state.MyBal)
+      {
+        this.setState({error:true})
+        return
+      }
+      await firebase.firestore().collection("users").doc(this.state.MyAcc).update({
+          Balance:+this.state.MyBal- +this.state.Amt
+      })
+      .then(() => {
+          console.log("Document successfully written!");
+      })
+      .catch((error) => {
+          console.error("Error writing document: ", error);
+      });
+  
+      var docRef = firebase.firestore().collection("users").doc(this.state.FriendAcc);
+      await docRef.get().then((doc) => {
+          if (doc.exists) {
+              console.log("Document data:", doc.data().Balance);
+              const bal=doc.data().Balance
+              this.setState({FriendBal:bal})
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      }).catch((error) => {
+          console.log("Error getting document:", error);
+      });
+  
+      await firebase.firestore().collection("users").doc(this.state.FriendAcc).update({
+          Balance:+this.state.FriendBal+ +this.state.Amt
+      })
+      .then(() => {
+          console.log("Document successfully written!");
+      })
+      .catch((error) => {
+          console.error("Error writing document: ", error);
+      });
+  
+      await firebase.firestore().collection("history").add({
+        Sender:this.state.MyAcc,
+        Reciever:this.state.FriendAcc,
+        Amount:this.state.Amt,
+        timestamp:  moment().valueOf().toString()
+      })
+      .then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+          console.error("Error adding document: ", error);
+      });
+    } else {
+      this.setState({warning2:true})
+      return
+    }
     this.setState({success:true})
     this.handleClose()
-      // {this.state.users.map((board) => (
-      //       <TableRow key={board.Id}>
-      //         <TableCell component="th" scope="row">
-      //           {board.Id}
-      //         </TableCell>
-      //         <TableCell >{board.FirstName}</TableCell>
-      //         <TableCell className={classes.hide}>{board.LastName}</TableCell>
-      //         <TableCell className={classes.hide}  >{board.PhoneNumber}</TableCell>
-      //         <TableCell className={classes.hide} >{board.Address}</TableCell>
-      //         <TableCell className={classes.hide}>{board.Email}</TableCell>
-      //         <TableCell >{board.Balance}</TableCell>
-      //       </TableRow>
-      //     ))}
+  }).catch((fail) => {
+    console.error("Error adding document: ", fail);
+  });
+
   }
   
 }

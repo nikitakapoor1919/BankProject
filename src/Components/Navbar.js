@@ -21,7 +21,7 @@ export class Navbar extends Component {
           },
           {
             name: "Github",
-            url: "https://www.instagram.com/nazeh_taha/",
+            url: "https://github.com/nikitakapoor1919",
             icon: ["fab", "github"],
           },
           {
