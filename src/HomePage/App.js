@@ -70,6 +70,9 @@ export default function SignInSide() {
             <Link color="inherit" href="/contact" >
             Contact Us
             </Link>
+            <Link color="inherit" href="/history" >
+            Transaction History
+            </Link>
             </Breadcrumbs>
             </div>
         </Grid>

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomeComponent from './HomePage/Home';
 import CustomerComponent from './Components/Users';
 import reportWebVitals from './reportWebVitals';
 import ContactPage from './Components/ContactPage'
 import TransferPage from './Components/Transfer'
 import NotFoundPage from './Components/NotFoundPage'
 import App from './HomePage/App'
+import HistoryPage from './Components/History'
 
 const routing =(
   <Router>
@@ -15,10 +15,10 @@ const routing =(
     <div id="routing-container" >
       <Switch>
            <Route exact path='/' component={App}></Route>
-          <Route path='/home' component={HomeComponent}></Route>
           <Route path='/view' component={CustomerComponent}></Route>
           <Route path='/transfer' component={TransferPage}></Route>
           <Route path='/contact' component={ContactPage} />
+          <Route path='/history' component={HistoryPage} />
           <Route component={NotFoundPage} />
       </Switch>
     </div>

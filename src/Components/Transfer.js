@@ -15,6 +15,7 @@ import { Component } from 'react';
 import { ThreeSixty } from '@material-ui/icons';
 import Users from './Users'
 import Footer from '../Components/Footer'
+import moment from 'moment'
 
 export default class Transfer extends Component {
   constructor(props) {
@@ -218,6 +219,19 @@ export default class Transfer extends Component {
     })
     .catch((error) => {
         console.error("Error writing document: ", error);
+    });
+
+    await firebase.firestore().collection("history").add({
+      Sender:this.state.MyAcc,
+      Reciever:this.state.FriendAcc,
+      Amount:this.state.Amt,
+      timestamp:  moment().valueOf().toString()
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
     });
     this.setState({success:true})
     this.handleClose()
