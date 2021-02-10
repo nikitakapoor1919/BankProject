@@ -1,4 +1,4 @@
-# Chat-App-ReactJS
+# Basic Bank System-ReactJS and Firestore
 Create a simple dynamic banking website.
 Flow: Home > View Customers > Transfer Money > Transaction History
 No Login Page. No User Creation. Only transfer of money between multiple users.
