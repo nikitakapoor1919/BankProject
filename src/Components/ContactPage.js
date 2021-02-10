@@ -48,7 +48,7 @@ const ContactPage = () => {
   return (
       <div style={{background:'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/background.jpg)',height:'100vh',}}>
       <Appbar/>
-          <form onSubmit={handleSubmit} style={{margin:"0 auto",width:700,position:"realative",top:100}}>
+          <form onSubmit={handleSubmit} style={{margin:"0 auto",width:700,position:"relative",top:200}}>
       <Card style={{borderRadius: 12,background: "#ededed",boxShadow:  "33px 33px 66px #acacac,-33px -33px 66px #ffffff"}}>
       <CardContent>
         <Typography style={{textTransform:"uppercase",fontWeight: 'bold',fontSize:25,textAlign:"center"}} variant="h6" id="tableTitle" component="div">
