@@ -26,3 +26,13 @@ p{
 	  from{box-shadow: inset -3px 0px 0px #888;}
 	  to{box-shadow: inset -3px 0px 0px transparent;}
 }
+.required-field::after {
+    content: "*";
+    color: red;
+    margin-left:2px
+  }
+  .required-field-dark::after {
+    content: "*";
+    color: #CF6679;
+    margin-left:2px
+  }

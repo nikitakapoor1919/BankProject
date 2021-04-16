@@ -66,6 +66,9 @@ export default function SignInSide() {
             <Link color="inherit" href="/" >
              Home
             </Link>
+            <Link color="inherit" href="/create-user" >
+            Create-User
+            </Link>
             <Link color="inherit" href="/view" >
             Customers
             </Link>
