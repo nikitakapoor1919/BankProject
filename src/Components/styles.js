@@ -1,4 +1,19 @@
 const styles = theme => ({
+    container: {
+        // overflowX: "auto",
+        // marginRight: "auto",
+        // marginLeft: "auto",
+        // marginTop: "50px",
+        // padding: "10px",
+        // margin:" 10px",
+        // height:"100vh"
+      },
+    table:{
+        margin:"0 auto",width:800,position:"relative",top:50,marginBottom:100,overflowX:"auto",height:"550px",
+          '@media screen and (max-width: 1038px)': {
+            width: "auto"
+        } 
+    },
     box:{
         // height:400,
         // overflow:"scroll",

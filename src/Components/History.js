@@ -10,9 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
-import Footer from '../Components/Footer'
 import Appbar from './AppBar'
 import moment from 'moment'
+import Footer from './Footer';
 
 class History extends Component {
   constructor(props) {
@@ -46,13 +46,13 @@ class History extends Component {
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
-
+  
   render() {
     const { classes } = this.props;
     return (
-    <div style={{background:'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/background.jpg)',height:'100vh',}} >
+    <div style={{margin:"0 auto"}} >
     <Appbar/>
-    <TableContainer component={Paper} className={classes.box}  style={{margin:"0 auto",width:800,position:"relative",top:100,marginBottom:100}}>
+    <TableContainer component={Paper} className={classes.table}>
       <Table className={classes.tableBox} aria-label="simple table">
         <TableHead>
           <TableRow >
@@ -74,7 +74,7 @@ class History extends Component {
         </TableBody>
       </Table>
     </TableContainer>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
     );
   }

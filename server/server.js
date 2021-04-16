@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
-const functions = require("firebase-functions");
+// const functions = require("firebase-functions");
 
 const app = express();
 app.use(cors());
@@ -14,7 +14,7 @@ const contactEmail = nodemailer.createTransport({
     service: 'gmail.com',
     auth: {
       user: "nikitakapoor0007@gmail.com",
-      pass: "",
+      pass: "25256579",
     },
   });
   // nodemailer.createTransport({

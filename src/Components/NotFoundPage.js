@@ -1,31 +1,20 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-
-// const NotFoundPage = () => (
-//   <div>
-//     <h1>404 - Not Found!</h1>
-//     <Link to="/">
-//       Go Home
-//     </Link>
-//   </div>
-// );
-
-// export default NotFoundPage;
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import './style.css'
 
 const NotFoundPage = () => (
-    <div id="mainn" style={{padding:40}} >
+    <Paper id="mainn" style={{padding:40,margin:"0 auto"}} >
     <div class="fof">
             <h1>Error 404</h1>
+            <p>Maybe the page you are looking for has been removed, or you typed in the wrong URL</p>
              <div>
-             <Link to="/">
+             <Link to="/" style={{textDecoration:"none",color:"gray"}}>
               Go Home
-              </Link>
+             </Link>
              </div>
     </div>
-  </div>
+  </Paper>
 );
 
 export default NotFoundPage;

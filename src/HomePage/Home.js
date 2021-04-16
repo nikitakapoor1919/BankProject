@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
@@ -11,15 +11,17 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Button from '@material-ui/core/IconButton';
+import './App.css'
+import HomeAppbar from '../Components/HomeAppbar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh'
   },
   image: {
-    backgroundImage: 'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/bank.jpg)',
+    backgroundImage: 'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/bank-image1.jpg)',
     backgroundRepeat: 'no-repeat',
-    filter: "brightness(70%)" ,
+    // filter: "brightness(70%)" ,
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
@@ -47,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
-
   return (
         <>
         <Grid container component="main" className={classes.root}>
@@ -63,19 +64,19 @@ export default function SignInSide() {
             </Typography>
             <Breadcrumbs aria-label="breadcrumb">
             <Link color="inherit" href="/" >
-                Home
+             Home
             </Link>
             <Link color="inherit" href="/view" >
-                View Customers
+            Customers
             </Link>
             <Link color="inherit" href="/transfer" >
-               Transfer
+            Transfer
             </Link>
-            {/* <Link color="inherit" href="/contact" >
-            Contact Us
-            </Link> */}
+            <Link color="inherit" href="/contact" >
+            Contact
+            </Link>
             <Link color="inherit" href="/history" >
-            Transaction History
+            History
             </Link>
             </Breadcrumbs>
             <div style={{display:"flex"}}>
@@ -94,7 +95,7 @@ export default function SignInSide() {
             </div>
         </Grid>
         </Grid>
-        <Footer/>
+        {/* <Footer/> */}
         </>
   );
 }

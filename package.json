@@ -20,6 +20,7 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
+    "react-intl": "^5.15.8",
     "react-made-with-love": "^1.0.1",
     "react-responsive-animate-navbar": "^1.1.8",
     "react-router-dom": "^5.2.0",

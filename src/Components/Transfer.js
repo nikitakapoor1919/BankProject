@@ -14,8 +14,8 @@ import firebase from '../firebase';
 import { Component } from 'react';
 import { ThreeSixty } from '@material-ui/icons';
 import Users from './Users'
-import Footer from '../Components/Footer'
 import moment from 'moment'
+import Footer from './Footer'
 
 export default class Transfer extends Component {
   constructor(props) {
@@ -68,7 +68,7 @@ export default class Transfer extends Component {
     const {classes}=this.props
     const { onClose, selectedValue, open } = this.props;
     return (
-      <div style={{background:'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/background.jpg)',height:'100vh',}}>
+      <div style={{margin:"0 auto"}}>
       <div style={{position:"relative",top:75}}>
       {
         this.state.success? <Alert action={<IconButton
@@ -185,7 +185,7 @@ export default class Transfer extends Component {
           </DialogActions>
         </Dialog>
         <Users/>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     );
   }
