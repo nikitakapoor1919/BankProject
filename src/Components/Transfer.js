@@ -16,8 +16,12 @@ import { ThreeSixty } from '@material-ui/icons';
 import Users from './Users'
 import moment from 'moment'
 import Footer from './Footer'
+import AppBar from './AppBar';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
+import History from './History'
 
-export default class Transfer extends Component {
+class Transfer extends Component {
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection('users');
@@ -43,7 +47,6 @@ export default class Transfer extends Component {
     const users = [];
     querySnapshot.forEach((doc) => {
       const { uid,Id,FirstName,LastName,Address,PhoneNumber,Email,Balance} = doc.data();
-      console.log("myData"+doc.data())
       users.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -68,7 +71,8 @@ export default class Transfer extends Component {
     const {classes}=this.props
     const { onClose, selectedValue, open } = this.props;
     return (
-      <div style={{margin:"0 auto"}}>
+      <div className={classes.container}>
+      <AppBar/>
       <div style={{position:"relative",top:75}}>
       {
         this.state.success? <Alert action={<IconButton
@@ -129,6 +133,10 @@ export default class Transfer extends Component {
       </div>
           {/* <Alert severity="error">Account Number Not Exist !!</Alert>
           <Alert severity="warning">Your balance is unsufficient !!</Alert> */}
+      <div className={classes.imgButton}>
+      <div>
+      <img src="https://raw.githubusercontent.com/nikitakapoor1919/Images/main/transfer.jpg" className={classes.responsive}/>
+      </div>
       <div style={{margin:"0 auto",position:"relative",top:40,display: "flex",justifyContent: "center",alignItems: "center"}}>
         <Button
             color="secondary"
@@ -140,8 +148,9 @@ export default class Transfer extends Component {
             Transfer Money
         </Button>
       </div>
+      </div>
         <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title" style={{textAlign:"center",textTransform:"uppercase"}}>Transfer Money</DialogTitle>
+          <DialogTitle id="form-dialog-title" style={{textAlign:"center",textTransform:"uppercase",textTransform:800}}>Transfer Money</DialogTitle>
           <DialogContent>
             <DialogContentText>
             Simpler. Faster. Friendlier.<br></br>
@@ -184,7 +193,7 @@ export default class Transfer extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        <Users/>
+        <History/>
         {/* <Footer/> */}
       </div>
     );
@@ -210,7 +219,6 @@ export default class Transfer extends Component {
     })
   }
   userTyping=(type,e)=>{
-    console.log("Typing")
     switch(type){
         case 'MyAcc':
             this.setState({MyAcc:e.target.value})
@@ -237,7 +245,6 @@ export default class Transfer extends Component {
       var docRef = firebase.firestore().collection("users").doc(this.state.MyAcc);
       await docRef.get().then((doc) => {
           if (doc.exists) {
-              console.log("Document data:", doc.data().Balance);
               const bal=doc.data().Balance
               this.setState({MyBal:bal})
           } else {
@@ -265,7 +272,6 @@ export default class Transfer extends Component {
       var docRef = firebase.firestore().collection("users").doc(this.state.FriendAcc);
       await docRef.get().then((doc) => {
           if (doc.exists) {
-              console.log("Document data:", doc.data().Balance);
               const bal=doc.data().Balance
               this.setState({FriendBal:bal})
           } else {
@@ -311,3 +317,4 @@ export default class Transfer extends Component {
   }
   
 }
+export default withStyles(styles) (Transfer);

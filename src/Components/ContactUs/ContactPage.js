@@ -52,7 +52,7 @@ const ContactPage = (props) => {
     <AppBar/>
     <div className={props.darkMode?"container-dark":"container"}>
     <div style={{textAlign: "center"}}>
-        <h2>Leave Us A Message</h2>
+    <p className="para">LEAVE US A MESSAGE</p>
         {/* <p>Swing by for a cup of coffee, or leave us a message:</p> */}
     </div>
     <div className="myrow">
@@ -69,7 +69,7 @@ const ContactPage = (props) => {
             <textarea  name="message" id="message"  placeholder="Write Something..." style={{height:170}} required></textarea>
             <Button
             variant="contained"
-            style={props.darkMode ?{backgroundColor:"#3A3B3C",borderRadius:10,color:"White" }:{backgroundColor:"#146EB4",borderRadius:10,color:"White"}}
+            style={{backgroundColor:"#146EB4",borderRadius:10,color:"White",marginBottom:"40px"}}
             endIcon={<SendIcon/>}
             fullWidth
             type="submit"

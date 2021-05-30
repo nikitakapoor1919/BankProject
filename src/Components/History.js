@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import firebase from '../firebase';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import Appbar from './AppBar'
 import moment from 'moment'
-import Footer from './Footer';
+import { Divider, Typography } from '@material-ui/core';
 
 class History extends Component {
   constructor(props) {
@@ -28,7 +20,6 @@ class History extends Component {
     const users = [];
     querySnapshot.forEach((doc) => {
       const { Sender,Reciever,Amount,timestamp} = doc.data();
-      console.log("Data",doc.id);
       users.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -41,40 +32,41 @@ class History extends Component {
     this.setState({
       users
    });
-  }
 
+  
+  }
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
   
   render() {
     const { classes } = this.props;
+    const sortedUsers=this.state.users.sort((a,b)=>b.timestamp - a.timestamp);
     return (
-    <div style={{margin:"0 auto"}} >
+    <div className={classes.container} >
     <Appbar/>
-    <TableContainer component={Paper} className={classes.table}>
-      <Table className={classes.tableBox} aria-label="simple table">
-        <TableHead>
-          <TableRow >
-            <TableCell className={classes.showHeader} >SENDER</TableCell>
-            <TableCell className={classes.hideHeader} >RECIEVER</TableCell>
-            <TableCell className={classes.showHeader} >AMOUNT(₹)</TableCell>
-            <TableCell className={classes.showHeader} >TIME</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.state.users.map((board,id) => (
-            <TableRow key={id}>
-              <TableCell >{board.Sender}</TableCell>
-              <TableCell >{board.Reciever}</TableCell>
-              <TableCell >{board.Amount}₹</TableCell>
-              <TableCell>{moment(Number(board.timestamp)).format('h:mm A ll')} </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    {/* <Footer/> */}
+    <Typography className={classes.para}>Transaction History</Typography>
+    <Divider/>
+    <table>
+      <thead>
+        <tr>
+          <th>SENDER</th>
+          <th>RECIEVER</th>
+          <th>AMOUNT(₹)</th>
+          <th>TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+       {sortedUsers.map((board,id) =>(
+        <tr>
+          <td data-column="FIRST NAME">{board.Sender}</td>
+          <td data-column="LAST NAME">{board.Reciever}</td>
+          <td data-column="EMAIL">{board.Amount}₹</td>
+          <td data-column="BALANCE(₹)">{moment(Number(board.timestamp)).format('h:mm A ll')}</td>
+        </tr>
+        ))}
+      </tbody>
+    </table>
     </div>
     );
   }

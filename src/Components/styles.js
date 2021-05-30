@@ -1,56 +1,53 @@
 const styles = theme => ({
     container: {
-        // overflowX: "auto",
-        // marginRight: "auto",
-        // marginLeft: "auto",
-        // marginTop: "50px",
-        // padding: "10px",
-        // margin:" 10px",
-        // height:"100vh"
+        margin:"0 auto",
+        marginBottom:100,
+        marginTop:100
       },
-    table:{
-        margin:"0 auto",width:800,position:"relative",top:50,marginBottom:100,overflowX:"auto",height:"550px",
-          '@media screen and (max-width: 1038px)': {
-            width: "auto"
+    footer:{
+        background:"rgb(67, 63, 63)",
+        top:"auto",
+        bottom:"0px",
+    },
+    appbar:{
+        background:"rgb(67, 63, 63)",
+    },
+    myAppbar:{
+        display:"none",
+        '@media screen and (max-width: 1024px)': {
+           display:"block",
+           background:"rgb(67, 63, 63)",
         } 
     },
-    box:{
-        // height:400,
-        // overflow:"scroll",
-        // '@media screen and (max-width: 1024px)': {
-        //     width: '350px',
-        // },
-        // '@media screen and (max-width: 400px)': {
-        //     width: '280px',
-        // }
+    center:{
+        margin:"0 auto"
     },
-    hide:{
-        // '@media screen and (max-width: 1024px)': {
-        //     display:"none"
-        // } 
+    para:{
+        fontSize: "1.9rem",
+        fontWeight: 700,
+        textAlign: "center",
+        textTransform:" uppercase"
     },
-    hideHeader:{
-        fontWeight:700,
-        background:"rgb(67, 63, 63)",
-        color:"white",
-        // '@media screen and (max-width: 1024px)': {
-        //     display:"none"
-        // } 
+    imgButton:{
+        display:"flex",
+        justifyContent:"space-evenly",
+        '@media screen and (max-width: 1024px)': {
+           display:"block"
+        } 
     },
-    showHeader:{
-        fontWeight:700,
-        background:"rgb(67, 63, 63)",
-        color:"white",
+    responsive:{
+        height:600,
+        '@media screen and (max-width: 1024px)': {
+            width:"100%",
+            height:"auto"
+         } 
     },
-    tableBox:{
-        minWidth: 650,
-        // '@media screen and (max-width: 1024px)': {
-        //     width: 350,
-        // },
-        // '@media screen and (max-width: 38px)': {
-        //     width: 200,
-        // } 
-
+    responsive2:{
+        height:300,
+        '@media screen and (max-width: 1024px)': {
+            width:"100%",
+            height:"auto"
+         } 
     }
 });
   

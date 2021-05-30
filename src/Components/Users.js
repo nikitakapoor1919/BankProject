@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import firebase from '../firebase';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import Appbar from './AppBar'
-import Footer from './Footer'
+import { Divider, Typography } from '@material-ui/core';
 
 class Users extends Component {
   constructor(props) {
@@ -22,7 +14,7 @@ class Users extends Component {
       users: []
     };
   }
-
+  
   onCollectionUpdate = (querySnapshot) => {
     const users = [];
     querySnapshot.forEach((doc) => {
@@ -44,40 +36,41 @@ class Users extends Component {
       users
    });
   }
-
+  
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
-
+  
   render() {
     const { classes } = this.props;
     return (
-    <div  style={{margin:"0 auto"}} >
+    <>
     <Appbar/>
-    <TableContainer component={Paper} className={classes.table}  >
-      <Table className={classes.tableBox} aria-label="simple table">
-        <TableHead>
-          <TableRow >
-            <TableCell className={classes.showHeader} >FIRST NAME</TableCell>
-            <TableCell className={classes.hideHeader} >LAST NAME</TableCell>
-            <TableCell className={classes.hideHeader} >EMAIL</TableCell>
-            <TableCell className={classes.showHeader} >BALANCE(₹)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.state.users.map((board) => (
-            <TableRow key={board.Id}>
-              <TableCell >{board.FirstName}</TableCell>
-              <TableCell className={classes.hide}>{board.LastName}</TableCell>
-              <TableCell className={classes.hide}>{board.Email}</TableCell>
-              <TableCell >{board.Balance}₹</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    {/* <Footer/> */}
+    <div  className={classes.container}>
+    <Typography className={classes.para}>Customers List</Typography>
+    <Divider/>
+    <table>
+      <thead>
+        <tr>
+          <th>FIRST NAME</th>
+          <th>LAST NAME</th>
+          <th>EMAIL</th>
+          <th>BALANCE(₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+       {this.state.users.map((board) => (
+        <tr>
+          <td data-column="FIRST NAME">{board.FirstName}</td>
+          <td data-column="LAST NAME">{board.LastName}</td>
+          <td data-column="EMAIL">{board.Email}</td>
+          <td data-column="BALANCE(₹)">{board.Balance}₹</td>
+        </tr>
+        ))}
+      </tbody>
+    </table>
     </div>
+    </>
     );
   }
 }

@@ -5,9 +5,8 @@ body {
   * {
     box-sizing: border-box;
   }
-  
-  /* Style inputs */
-  input[type=text], select, textarea {
+
+  input[type=text],input[type=number], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -27,23 +26,10 @@ body {
     background-color: #45a049;
   }
   
-  /* Style the container/contact section */
   .container {
-    /* border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 10px; */
-    /* margin-top:120px; */
-    margin:100px
+    margin-top:120px;
+    /* margin:20px */
   }
-  .container-dark{
-    /* border-radius: 5px;
-    background-color: #212121; */
-    /* padding: 10px; */
-    margin:100px;
-    /* margin:20px; */
-    color: white;
-  }
-  /* Create two columns that float next to eachother */
   .column {
     float: left;
     width: 50%;
@@ -54,7 +40,6 @@ body {
     display: flex;
     justify-content: center;
   }
-  /* Clear floats after the columns */
   .row:after {
     content: "";
     display: table;
@@ -80,10 +65,10 @@ body {
         display: block;
     }
     .container {
-        margin:20px
+        margin-top:100px;
       }
       .container-dark{
-        margin:20px
+        margin-top:50px
       }
   }
   .required-field::after {
@@ -95,4 +80,10 @@ body {
     content: "*";
     color: #CF6679;
     margin-left:2px
+  }
+  .para{
+    font-size: 1.9rem;
+      font-weight: 700;
+      text-align: center;
+    text-transform: uppercase;
   }

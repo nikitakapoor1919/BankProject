@@ -11,7 +11,6 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Button from '@material-ui/core/IconButton';
-import './App.css'
 import HomeAppbar from '../Components/HomeAppbar';
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +53,8 @@ export default function SignInSide() {
         <Grid container component="main" className={classes.root}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square style={{backgroundImage: 'url(https://raw.githubusercontent.com/nikitakapoor1919/Images/main/bg3.jpg)'}}>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square style={{backgroundColor:"rgb(246 246 246)"}}>
+            <HomeAppbar/>
             <div className={classes.paper}>
             <Typography variant="h4" component="h2" className={classes.heading}>
             Ready To Transfer Money
@@ -67,7 +67,7 @@ export default function SignInSide() {
              Home
             </Link>
             <Link color="inherit" href="/create-user" >
-            Create-User
+            Create User
             </Link>
             <Link color="inherit" href="/view" >
             Customers

@@ -12,13 +12,8 @@ class HomeAppbar extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <AppBar style={{background:"rgb(67, 63, 63)"}}>
+                <AppBar className={classes.myAppbar}>
                     <Toolbar>
-                        {/* <a href='/' className={classes.back}>
-                        <IconButton edge="start" style={{color:"white"}} onClick={this.back} aria-label="close">
-                            <ArrowBackIcon/>
-                        </IconButton>
-                        </a> */}
                     </Toolbar>
                 </AppBar>
             </div>
