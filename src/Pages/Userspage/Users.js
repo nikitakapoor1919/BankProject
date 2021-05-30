@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import firebase from '../firebase';
+import firebase from '../../firebase';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
-import Appbar from './AppBar'
+import styles from '../../styles/styles';
+import Appbar from '../../Components/AppBar'
 import { Divider, Typography } from '@material-ui/core';
 
 class Users extends Component {
@@ -47,7 +47,7 @@ class Users extends Component {
     <>
     <Appbar/>
     <div  className={classes.container}>
-    <Typography className={classes.para}>Customers List</Typography>
+    <Typography className={classes.para}>Users List</Typography>
     <Divider/>
     <table>
       <thead>

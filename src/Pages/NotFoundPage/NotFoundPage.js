@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
-import './style.css'
+import '../../styles/notFound.css'
 
 const NotFoundPage = () => (
     <Paper id="mainn" style={{padding:40,margin:"0 auto"}} >

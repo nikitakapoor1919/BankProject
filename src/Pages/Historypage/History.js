@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import firebase from '../firebase';
+import firebase from '../../firebase';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
-import Appbar from './AppBar'
+import styles from '../../styles/styles';
+import Appbar from '../../Components/AppBar'
 import moment from 'moment'
 import { Divider, Typography } from '@material-ui/core';
 

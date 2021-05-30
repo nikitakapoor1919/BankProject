@@ -1,16 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import ContactPage from './Components/ContactUs/ContactPage'
-import TransferPage from './Components/Transfer'
-import NotFoundPage from './Components/NotFoundPage'
-import Home from './HomePage/Home'
-import HistoryPage from './Components/History'
-import CustomerComponent from './Components/Users';
-import './App.css';
+import ContactPage from './Pages/ContactUs/ContactPage'
+import TransferPage from './Pages/Transferpage/Transfer'
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage'
+import Home from './Pages/HomePage/Home'
+import HistoryPage from './Pages/Historypage/History'
+import CustomerComponent from './Pages/Userspage/Users';
+import './styles/App.css';
 import HomeAppbar from './Components/HomeAppbar';
 import Footer from './Components/Footer'
-import Create from './Components/Create';
+import Create from './Pages/CreateUserPage/Create';
 
 function App() {
   return (

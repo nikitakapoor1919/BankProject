@@ -6,7 +6,6 @@ export class Navbar extends Component {
     return (
       <ReactNavbar
         color="rgb(25, 25, 25)"
-        //logo="https://raw.githubusercontent.com/nikitakapoor1919/Images/67b412337e21bbb9ecb6a76b3b659fccf0b99c58/logo.svg"
         menu={[
           { name: "HOME", to: "/" },
           { name: "CUSTOMERS", to: "/" },

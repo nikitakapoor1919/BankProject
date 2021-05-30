@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import './style.css'
+import '../../styles/contact.css'
 import email from '../../svg/email.svg'
-import AppBar from '../AppBar'
-import Footer from '../Footer'
+import AppBar from '../../Components/AppBar'
 
 const useStyles = makeStyles({
   box:{
@@ -53,7 +47,6 @@ const ContactPage = (props) => {
     <div className={props.darkMode?"container-dark":"container"}>
     <div style={{textAlign: "center"}}>
     <p className="para">LEAVE US A MESSAGE</p>
-        {/* <p>Swing by for a cup of coffee, or leave us a message:</p> */}
     </div>
     <div className="myrow">
         <div className="column">

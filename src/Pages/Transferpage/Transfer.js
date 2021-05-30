@@ -10,16 +10,15 @@ import SendIcon from '@material-ui/icons/Send';
 import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import firebase from '../firebase';
+import firebase from '../../firebase';
 import { Component } from 'react';
-import { ThreeSixty } from '@material-ui/icons';
-import Users from './Users'
 import moment from 'moment'
-import Footer from './Footer'
-import AppBar from './AppBar';
+import Footer from '../../Components/Footer'
+import AppBar from '../../Components/AppBar';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
-import History from './History'
+import styles from '../../styles/styles';
+import History from '../Historypage/History'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Transfer extends Component {
   constructor(props) {
@@ -39,7 +38,8 @@ class Transfer extends Component {
       MyAcc:"",
       FriendUid:"",
       MyBal:0,
-      FriendsBal:0
+      FriendsBal:0,
+      progress:false
 
     };
   }
@@ -73,7 +73,8 @@ class Transfer extends Component {
     return (
       <div className={classes.container}>
       <AppBar/>
-      <div style={{position:"relative",top:75}}>
+      {this.state.progress ? <CircularProgress style={{display:"flex",margin:"0 auto"}}/>:""}
+      <div style={{position:"relative"}}>
       {
         this.state.success? <Alert action={<IconButton
           aria-label="close"
@@ -239,6 +240,7 @@ class Transfer extends Component {
       this.setState({warning1:true})
       return
     }
+    this.setState({progress:true})
     var doc = firebase.firestore().collection('users').doc(this.state.FriendAcc);
     doc.get().then(async (docData) => {
      if (docData.exists) {
@@ -256,6 +258,7 @@ class Transfer extends Component {
       });
       if(this.state.Amt > this.state.MyBal)
       {
+        this.setState({progress:false})
         this.setState({error:true})
         return
       }
@@ -305,15 +308,16 @@ class Transfer extends Component {
           console.error("Error adding document: ", error);
       });
     } else {
+      this.setState({progress:false})
       this.setState({warning2:true})
       return
     }
+    this.setState({progress:false})
     this.setState({success:true})
     this.handleClose()
   }).catch((fail) => {
     console.error("Error adding document: ", fail);
   });
-
   }
   
 }

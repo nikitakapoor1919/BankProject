@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import firebase from '../firebase';
+import firebase from '../../firebase';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import AppBar from './AppBar';
+import AppBar from '../../Components/AppBar';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
+import styles from '../../styles/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Create extends Component {

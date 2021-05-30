@@ -6,12 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Footer from '../Components/Footer'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Button from '@material-ui/core/IconButton';
-import HomeAppbar from '../Components/HomeAppbar';
+import HomeAppbar from '../../Components/HomeAppbar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,7 +97,6 @@ export default function SignInSide() {
             </div>
         </Grid>
         </Grid>
-        {/* <Footer/> */}
         </>
   );
 }
