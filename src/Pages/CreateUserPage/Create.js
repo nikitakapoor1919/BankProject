@@ -75,7 +75,7 @@ class Create extends Component {
       </div>
       <div className="create">
       <AppBar/>
-      {this.state.progress ? <CircularProgress />:""}
+      {this.state.progress ? <CircularProgress className={classes.progress} />:""}
       {
         this.state.success? <Alert action={<IconButton
           aria-label="close"

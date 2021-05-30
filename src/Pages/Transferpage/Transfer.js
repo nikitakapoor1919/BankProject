@@ -73,7 +73,7 @@ class Transfer extends Component {
     return (
       <div className={classes.container}>
       <AppBar/>
-      {this.state.progress ? <CircularProgress style={{display:"flex",margin:"0 auto"}}/>:""}
+      {this.state.progress ? <CircularProgress className={classes.progress}/>:""}
       <div style={{position:"relative"}}>
       {
         this.state.success? <Alert action={<IconButton

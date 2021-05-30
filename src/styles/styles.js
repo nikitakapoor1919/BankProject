@@ -48,6 +48,9 @@ const styles = theme => ({
             width:"100%",
             height:"auto"
          } 
+    },
+    progress:{
+        display:"flex",margin:"0 auto"
     }
 });
   
