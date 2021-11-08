@@ -59,10 +59,10 @@ class History extends Component {
       <tbody>
        {sortedUsers.map((board,id) =>(
         <tr>
-          <td data-column="FIRST NAME">{board.Sender}</td>
-          <td data-column="LAST NAME">{board.Reciever}</td>
-          <td data-column="EMAIL">{board.Amount}₹</td>
-          <td data-column="BALANCE(₹)">{moment(Number(board.timestamp)).format('h:mm A ll')}</td>
+          <td data-column="SENDER">{board.Sender}</td>
+          <td data-column="RECIEVER">{board.Reciever}</td>
+          <td data-column="AMOUNT(₹)">₹{board.Amount}</td>
+          <td data-column="TIME">{moment(Number(board.timestamp)).format('h:mm A ll')}</td>
         </tr>
         ))}
       </tbody>

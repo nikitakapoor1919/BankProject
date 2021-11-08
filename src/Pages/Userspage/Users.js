@@ -54,7 +54,7 @@ class Users extends Component {
         <tr>
           <th>FIRST NAME</th>
           <th>LAST NAME</th>
-          <th>EMAIL</th>
+          <th>EMAIL / USERNAME</th>
           <th>BALANCE(₹)</th>
         </tr>
       </thead>
@@ -63,8 +63,8 @@ class Users extends Component {
         <tr>
           <td data-column="FIRST NAME">{board.FirstName}</td>
           <td data-column="LAST NAME">{board.LastName}</td>
-          <td data-column="EMAIL">{board.Email}</td>
-          <td data-column="BALANCE(₹)">{board.Balance}₹</td>
+          <td data-column="EMAIL/USERNAME">{board.Email}</td>
+          <td data-column="BALANCE(₹)">₹{board.Balance}</td>
         </tr>
         ))}
       </tbody>

@@ -21,8 +21,10 @@ class Create extends Component {
       Balance: 0,
       LastName:'',
       error:false,
+      errorName:false,
       success:false,
-      progress: false
+      progress: false,
+      errorLastName: false
     };
   }
   onChange = (e) => {
@@ -35,11 +37,38 @@ class Create extends Component {
       this.setState({error:true})
       return false
     }
+    if(parseInt(this.state.Balance) >= 10000000 ){
+      this.setState({error:true})
+      return false
+    }
     return true
+  }
+  checkName=() => {
+    const pattern =new RegExp(/^[a-zA-Z]+ [a-zA-Z]+$/);
+    if(pattern.test(this.state.FirstName)==true){
+      return true
+    }
+    else{
+      this.setState({errorName:true})
+      return false
+    }
+
+  }
+  checkLastName=() => {
+    const pattern =new RegExp(/^[a-zA-Z]+ [a-zA-Z]+$/);
+    if(pattern.test(this.state.LastName)==true){
+      return true
+    }
+    else{
+      this.setState({errorLastName:true})
+      return false
+    }
+
   }
   onSubmit = (e) => {
     e.preventDefault()
     if(this.checkBal()){
+    
       {this.setState({progress:true})}
       const { FirstName,LastName,Email, Balance } = this.state;
       this.ref.doc(Email).set({
@@ -104,6 +133,34 @@ class Create extends Component {
         Your balance is unsufficient !!
         </Alert>:""
       }
+       {
+        this.state.errorName? <Alert  severity="error" action={<IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => this.setState({errorName:false})}
+          style={{width:'25%',marginTop:'-20px'}}
+          >
+          <CloseIcon fontSize="inherit" />
+          </IconButton>}
+        >
+        Invalid First Name !!
+        </Alert>:""
+      }
+      {
+        this.state.errorLastName? <Alert  severity="error" action={<IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => this.setState({errorLastName:false})}
+          style={{width:'25%',marginTop:'-20px'}}
+          >
+          <CloseIcon fontSize="inherit" />
+          </IconButton>}
+        >
+        Invalid Last Name !!
+        </Alert>:""
+      }
           <div >
             <p className="para">CREATE NEW CUSTOMER</p>
             <form onSubmit={this.onSubmit}>
@@ -116,8 +173,8 @@ class Create extends Component {
                 <input type="text"  name="LastName" value={LastName} onChange={this.onChange} placeholder="Last Name" required />
               </div>
               <div class="form-group">
-                <label className="required-field" for="Email">Email:</label>
-                <input type="text"  name="Email" value={Email} onChange={this.onChange} placeholder="Email" required/>
+                <label className="required-field" for="Email">Email/Username:</label>
+                <input type="email"  name="Email" value={Email} onChange={this.onChange} placeholder="Email/Username" required/>
               </div>
               <div class="form-group">
                 <label className="required-field" for="Balance">Balance:</label>
